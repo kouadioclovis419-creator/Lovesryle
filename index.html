@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LoveStyle ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #160d16;
+  color: white;
+}
+
+header {
+  text-align: center;
+  padding: 28px 15px;
+  background: linear-gradient(135deg, #8d123c, #e62e65);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 35px;
+}
+
+header p {
+  margin-bottom: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 14px 8px;
+  background: #261622;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 9px;
+  font-size: 14px;
+}
+
+main {
+  max-width: 650px;
+  margin: auto;
+  padding: 18px;
+}
+
+.intro {
+  text-align: center;
+  padding: 20px 8px;
+}
+
+h2 {
+  color: #ff7da6;
+}
+
+.card {
+  background: #291725;
+  border: 1px solid #593044;
+  border-radius: 15px;
+  padding: 17px;
+  margin: 16px 0;
+}
+
+.message {
+  line-height: 1.6;
+}
+
+button {
+  border: none;
+  border-radius: 9px;
+  padding: 11px 15px;
+  margin-top: 8px;
+  background: #e62e65;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  padding: 25px 12px;
+  color: #e8b7ca;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>❤️ LoveStyle</h1>
+  <p>L'amour commence par un mot...</p>
+</header>
+
+<nav>
+  <a href="#accueil">Accueil</a>
+  <a href="#drague">Drague</a>
+  <a href="#amour">Amour</a>
+  <a href="#conseils">Conseils</a>
+</nav>
+
+<main>
+  <section class="intro" id="accueil">
+    <h2>Bienvenue sur LoveStyle 💕</h2>
+    <p>
+      Trouve les mots justes pour exprimer tes sentiments,
+      faire sourire une personne et créer une belle connexion.
+    </p>
+  </section>
+
+  <section id="drague">
+    <h2>😍 Phrases de drague</h2>
+
+    <div class="card">
+      <h3>Un premier message</h3>
+      <p class="message">
+        Salut ! Je voulais simplement te dire que ton sourire
+        a quelque chose qui donne envie de faire connaissance.
+      </p>
+      <button onclick="copier(this)">Copier le message</button>
+    </div>
+
+    <div class="card">
+      <h3>Un compliment élégant</h3>
+      <p class="message">
+        Tu as une belle énergie. J'aimerais apprendre à te connaître,
+        si cela te fait plaisir aussi.
+      </p>
+      <button onclick="copier(this)">Copier le message</button>
+    </div>
+  </section>
+
+  <section id="amour">
+    <h2>💌 Déclarations d'amour</h2>
+
+    <div class="card">
+      <h3>Un message sincère</h3>
+      <p class="message">
+        Depuis que je te connais, certains moments ont une saveur
+        particulière. J'aimerais découvrir avec toi où cette belle
+        complicité pourrait nous mener.
+      </p>
+      <button onclick="copier(this)">Copier le message</button>
+    </div>
+
+    <div class="card">
+      <h3>Un message de bonne nuit</h3>
+      <p class="message">
+        Je te souhaite une douce nuit, remplie de beaux rêves.
+        Prends soin de toi et garde le sourire. ❤️
+      </p>
+      <button onclick="copier(this)">Copier le message</button>
+    </div>
+  </section>
+
+  <section id="conseils">
+    <h2>🌹 Conseils de séduction</h2>
+
+    <div class="card">
+      <p>1. Reste naturel et sois toi-même.</p>
+      <p>2. Écoute vraiment l'autre personne.</p>
+      <p>3. Sois respectueux et accepte un refus.</p>
+      <p>4. Privilégie une conversation sincère plutôt que des phrases toutes faites.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>❤️ LoveStyle — Les mots qui rapprochent.</p>
+  <p>Fait avec passion.</p>
+  <p class="signature">By Clovis ❤️</p>
+</footer>
+
+
+<script>
+function copier(bouton) {
+  const message = bouton.previousElementSibling.innerText;
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(message)
+      .then(() => alert("Message copié ! ❤️"))
+      .catch(() => copierAutrement(message));
+  } else {
+    copierAutrement(message);
+  }
+}
+
+function copierAutrement(message) {
+  const zone = document.createElement("textarea");
+  zone.value = message;
+  zone.style.position = "fixed";
+  zone.style.opacity = "0";
+  document.body.appendChild(zone);
+  zone.select();
+
+  try {
+    document.execCommand("copy");
+    alert("Message copié ! ❤️");
+  } catch (e) {
+    alert("Sélectionne et copie le message manuellement.");
+  }
+
+  zone.remove();
+}
+</script>
+
+</body>
+</html>
